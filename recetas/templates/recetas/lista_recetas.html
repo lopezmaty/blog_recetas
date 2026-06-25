@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista de Recetas {% endblock %}
+
+{% block content %}
+
+{% for receta in recetas %}
+<p>{{receta.titulo}}</p>
+<p>{{receta.categorias}}</p>
+<p>{{receta.autor}}</p>
+{% endfor %}
+
+{% endblock %}

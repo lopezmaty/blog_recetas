@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Eliminar Receta {% endblock %}
+
+{% block content %}
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>Confirma que desea eliminar la receta?</p>
+    <button>Eliminar</button>
+</form>
+
+{% endblock %}

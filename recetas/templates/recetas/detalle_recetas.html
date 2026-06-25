@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Detalle de Receta {% endblock %}
+
+{% block content %}
+
+
+<p>{{receta.titulo}}</p>
+<p>{{receta.descripcion}}</p>
+<img src="{{ receta.imagen.url }}" alt="{{ receta.titulo }}">
+<p>{{receta.categorias}}</p>
+<p>{{receta.autor}}</p>
+
+{% endblock %}
