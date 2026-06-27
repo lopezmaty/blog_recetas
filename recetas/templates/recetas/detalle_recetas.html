@@ -8,7 +8,9 @@
 <p>{{receta.titulo}}</p>
 <p>{{receta.descripcion}}</p>
 <img src="{{ receta.imagen.url }}" alt="{{ receta.titulo }}">
-<p>{{receta.categorias}}</p>
+{% for categoria in receta.categorias.all %}
+  <p>{{ categoria.nombre }}</p>
+{% endfor %}
 <p>{{receta.autor}}</p>
 
 {% endblock %}

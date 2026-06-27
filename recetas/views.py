@@ -2,6 +2,8 @@ from django.shortcuts import render
 from . import models
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from . import forms
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -14,13 +16,14 @@ class RecetasListView(ListView):
 class RecetasDetailView(DetailView):
     template_name = 'recetas/detalle_recetas.html'
     model = models.Recetas
+    context_object_name = 'receta'
     
 
 class RecetasCreateView(LoginRequiredMixin, CreateView):
     template_name = 'recetas/crear_recetas.html'
     model = models.Recetas
-    fields = ('titulo', 'descripcion', 'imagen', 'categorias',)
-    success_url = 'recetas/lista_recetas.html'
+    form_class = forms.RecetaForm
+    success_url = reverse_lazy('recetas:lista')
 
     def form_valid(self, form):
         form.instance.autor = self.request.user
@@ -30,11 +33,11 @@ class RecetasCreateView(LoginRequiredMixin, CreateView):
 class RecetasUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'recetas/editar_recetas.html'
     model = models.Recetas
-    fields = ('titulo', 'descripcion', 'imagen', 'categorias',)
-    success_url = 'recetas/lista_recetas.html'
+    form_class = forms.RecetaForm
+    success_url = reverse_lazy('recetas:lista')
 
 
 class RecetasDeleteView(LoginRequiredMixin, DeleteView):  
     template_name = 'recetas/eliminar_recetas.html'  
     model = models.Recetas
-    success_url = 'recetas/lista_recetas.html'
+    success_url = reverse_lazy('recetas:lista')

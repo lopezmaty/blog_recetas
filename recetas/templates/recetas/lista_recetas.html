@@ -6,7 +6,9 @@
 
 {% for receta in recetas %}
 <p>{{receta.titulo}}</p>
-<p>{{receta.categorias}}</p>
+{% for categoria in receta.categorias.all %}
+  <p>{{ categoria.nombre }}</p>
+{% endfor %}
 <p>{{receta.autor}}</p>
 {% endfor %}
 

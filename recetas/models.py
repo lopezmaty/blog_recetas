@@ -13,10 +13,10 @@ class Categorias(models.Model):
 class Recetas(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField(max_length=500)
-    imagen = models.ImageField()
+    imagen = models.ImageField(blank=True)
     categorias = models.ManyToManyField(Categorias)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_hora = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.categorias
+        return self.titulo
