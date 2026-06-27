@@ -7,6 +7,9 @@ from django.utils import timezone
 class Categorias(models.Model):
     nombre = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.nombre
+
 class Recetas(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField(max_length=500)
@@ -14,3 +17,6 @@ class Recetas(models.Model):
     categorias = models.ManyToManyField(Categorias)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_hora = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.categorias
