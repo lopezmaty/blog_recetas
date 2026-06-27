@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='recetas/lista/', permanent=False)),
     path('admin/', admin.site.urls),
     path('recetas/', include('recetas.urls')),
     path('accounts/', include('accounts.urls'))
